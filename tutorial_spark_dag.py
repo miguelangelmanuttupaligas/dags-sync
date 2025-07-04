@@ -21,7 +21,6 @@ with DAG(
             "spark.kubernetes.container.image": "miguelmanuttupa/pyspark-k8s:3.5.0",
             "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
             "spark.kubernetes.authenticate.driver.serviceAccountName": "spark-sa",
-            "spark.kubernetes.driver.pod.name": "pi-airflow-k8s-driver",
             "spark.kubernetes.namespace": "airflow",
             "spark.driver.memory": "1g",
             "spark.executor.instances": "1",
