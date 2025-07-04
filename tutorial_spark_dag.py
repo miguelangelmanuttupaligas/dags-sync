@@ -21,7 +21,7 @@ with DAG(
             "spark.master": "k8s://https://kubernetes.default.svc:443",
             "spark.submit.deployMode": "cluster",
             "spark.app.name": "pi-airflow-k8s",
-            "spark.kubernetes.container.image": "miguelmanuttupa/spark-k8s:3.5.0",
+            "spark.kubernetes.container.image": "miguelmanuttupa/pyspark-k8s:3.5.0",
             "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
             "spark.kubernetes.authenticate.driver.serviceAccountName": "spark-sa",
             "spark.kubernetes.driver.pod.name": "pi-airflow-k8s-driver",
