@@ -31,3 +31,5 @@ with DAG(
             "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
         }
     )
+
+submit_spark
