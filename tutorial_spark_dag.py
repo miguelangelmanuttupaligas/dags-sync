@@ -18,9 +18,9 @@ with DAG(
         java_class="org.apache.spark.examples.SparkPi",
         verbose=True,
         conf={
-            "spark.kubernetes.container.image": "miguelmanuttupa/pyspark-k8s:3.5.0",
+            "spark.kubernetes.container.image": "miguelmanuttupa/pyspark-k8s:3.5.0-python3.11",
             "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
-            "spark.kubernetes.authenticate.driver.serviceAccountName": "spark-sa",
+            "spark.kubernetes.authenticate.driver.serviceAccountName": "spark-sa-airflow",
             "spark.kubernetes.namespace": "airflow",
             "spark.driver.memory": "1g",
             "spark.executor.instances": "1",
