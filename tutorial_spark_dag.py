@@ -37,7 +37,7 @@ with DAG(
             "spark.executor.cores": "2",
             "spark.executor.memory": "2g",
             "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
-            "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem"
+            "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
             "spark.hadoop.fs.s3a.endpoint": os.getenv("S3_ENDPOINT_URL"),
             "spark.hadoop.fs.s3a.path.style.access": "true",
             "spark.hadoop.fs.s3a.access.key": os.getenv("ACCESS_KEY"),
