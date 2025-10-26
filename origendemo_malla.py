@@ -24,7 +24,7 @@ BASE_SPARK_CONF = {
 }
 
 LIMA = pendulum.timezone("America/Lima")
-ID_SPARK_CONF="spark_conn"
+SPARK_CONN="spark_conn"
 IMAGEN_ORIGENDEMO = "miguelmanuttupa/lchcimage-brz-origendemo:latest"
 
 with DAG(
@@ -34,7 +34,7 @@ with DAG(
 ) as dag:
     
     brz_origendemo_users_ddl = SparkSubmitOperator(
-        task_id="brz_origendemo_users_ddl", conn_id=ID_SPARK_CONF, verbose=True,
+        task_id="brz_origendemo_users_ddl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
         application="local:////opt/spark/app/users/ddl/brz_origendemo_users_ddl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
@@ -48,7 +48,7 @@ with DAG(
     )
 
     brz_origendemo_users_etl = SparkSubmitOperator(
-        task_id="brz_origendemo_users_etl", conn_id=ID_SPARK_CONF, verbose=True,
+        task_id="brz_origendemo_users_etl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
         application="local:////opt/spark/app/users/etl/brz_origendemo_users_etl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
@@ -66,7 +66,7 @@ with DAG(
     )
 
     brz_origendemo_products_ddl = SparkSubmitOperator(
-        task_id="brz_origendemo_products_ddl", conn_id=ID_SPARK_CONF, verbose=True,
+        task_id="brz_origendemo_products_ddl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
         application="local:////opt/spark/app/products/ddl/brz_origendemo_products_ddl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
@@ -80,7 +80,7 @@ with DAG(
     )
 
     brz_origendemo_products_etl = SparkSubmitOperator(
-        task_id="brz_origendemo_products_etl", conn_id=ID_SPARK_CONF, verbose=True,
+        task_id="brz_origendemo_products_etl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
         application="local:////opt/spark/app/products/etl/brz_origendemo_products_etl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
