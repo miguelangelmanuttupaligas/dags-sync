@@ -48,7 +48,7 @@ with DAG(
     )
 
     brz_origendemo_users_etl = SparkSubmitOperator(
-        task_id="brz_origendemo_users_ddl", conn_id=ID_SPARK_CONF, verbose=True,
+        task_id="brz_origendemo_users_etl", conn_id=ID_SPARK_CONF, verbose=True,
         application="local:////opt/spark/app/users/etl/brz_origendemo_users_etl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
