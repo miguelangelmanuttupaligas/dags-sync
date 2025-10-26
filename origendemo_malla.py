@@ -8,6 +8,7 @@ from datetime import datetime
 BASE_SPARK_CONF = {
     "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
     "spark.kubernetes.authenticate.driver.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME",default="spark-sa-airflow"),
+    "spark.kubernetes.executor.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME",default="spark-sa-airflow"),
     "spark.kubernetes.namespace": os.getenv("POD_NAMESPACE",default="airflow"),
     "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
     "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
