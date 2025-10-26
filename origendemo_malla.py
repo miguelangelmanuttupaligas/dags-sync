@@ -4,6 +4,15 @@ from airflow import DAG
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from datetime import datetime
 
+print("===========================================Imprimiendo SERVICE_ACCOUNT_NAME: ",os.getenv("SERVICE_ACCOUNT_NAME"))
+print("===========================================Imprimiendo POD_NAMESPACE: ",os.getenv("POD_NAMESPACE"))
+print("===========================================Imprimiendo S3_ENDPOINT_URL: ",os.getenv("S3_ENDPOINT_URL"))
+print("===========================================Imprimiendo ACCESS_KEY: ",os.getenv("ACCESS_KEY"))
+print("===========================================Imprimiendo SECRET_KEY: ",os.getenv("SECRET_KEY"))
+print("===========================================Imprimiendo WAREHOUSE_DIR: ",os.getenv("WAREHOUSE_DIR"))
+print("===========================================Imprimiendo METASTORE_URI: ",os.getenv("METASTORE_URI"))
+print("===========================================Imprimiendo NB_USER: ",os.getenv("NB_USER"))
+
 # -------- Configuración base común --------
 BASE_SPARK_CONF = {
     "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
