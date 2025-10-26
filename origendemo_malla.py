@@ -44,7 +44,7 @@ with DAG(
             **BASE_SPARK_CONF
         },
         env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER")
+            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
         }
     )
 
@@ -58,7 +58,7 @@ with DAG(
             **BASE_SPARK_CONF
         },
         env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER")
+            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
             "SERVER_DB": "mssql-service.data-services.svc.cluster.local:1433",
             "FUENTE": "origendemo",
             "USER": "SA",
@@ -76,7 +76,7 @@ with DAG(
             **BASE_SPARK_CONF
         },
         env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER")
+            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
         }
     )
 
@@ -90,7 +90,7 @@ with DAG(
             **BASE_SPARK_CONF
         },
         env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER")
+            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
             "SERVER_DB": "mssql-service.data-services.svc.cluster.local:1433",
             "FUENTE": "origendemo",
             "USER": "SA",
