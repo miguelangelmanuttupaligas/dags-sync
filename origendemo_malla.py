@@ -43,7 +43,7 @@ with DAG(
             **BASE_SPARK_CONF,
         },
         env_vars={
-            "BUCKET": "lhchprd",
+            "POD_NAMESPACE": "airflow", "BUCKET": "lhchprd",
         }
     )
 
@@ -57,7 +57,7 @@ with DAG(
             **BASE_SPARK_CONF,
         },
         env_vars={
-            "BUCKET": "lhchprd",
+            "POD_NAMESPACE": "airflow", "BUCKET": "lhchprd",
             "SERVER_DB": "mssql-service.data-services.svc.cluster.local:1433",
             "FUENTE": "origendemo",
             "USER": "SA",
@@ -75,7 +75,7 @@ with DAG(
             **BASE_SPARK_CONF,
         },
         env_vars={
-            "BUCKET": "lhchprd",
+            "POD_NAMESPACE": "airflow", "BUCKET": "lhchprd",
         }
     )
 
@@ -89,7 +89,7 @@ with DAG(
             **BASE_SPARK_CONF,
         },
         env_vars={
-            "BUCKET": "lhchprd",
+            "POD_NAMESPACE": "airflow", "BUCKET": "lhchprd",
             "SERVER_DB": "mssql-service.data-services.svc.cluster.local:1433",
             "FUENTE": "origendemo",
             "USER": "SA",
