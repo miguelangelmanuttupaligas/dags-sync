@@ -8,7 +8,8 @@ from datetime import datetime
 BASE_SPARK_CONF = {
     "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
     "spark.kubernetes.authenticate.driver.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME",default="spark-sa-airflow"),
-    "spark.kubernetes.executor.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME",default="spark-sa-airflow"),
+    "spark.kubernetes.authenticate.executor.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME",default="spark-sa-airflow"),
+    "spark.kubernetes.driver.label.driver_pod_name": "{{ti.xcom_pull(task_ids='label_task',key='pod_label')}}",
     "spark.kubernetes.namespace": os.getenv("POD_NAMESPACE",default="airflow"),
     "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
     "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
@@ -20,8 +21,11 @@ BASE_SPARK_CONF = {
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
     "spark.hadoop.fs.s3a.endpoint": os.getenv("S3_ENDPOINT_URL",default="http://minio.data-services.svc.cluster.local:9000"),
     "spark.hadoop.fs.s3a.path.style.access": "true",
+    "spark.hadoop.fs.s3a.fast.upload": "true",
     "spark.hadoop.fs.s3a.access.key": os.getenv("ACCESS_KEY",default="hive-key-prd-132fsad"),
     "spark.hadoop.fs.s3a.secret.key": os.getenv("SECRET_KEY",default="hive-secret-prd-13rfsdfsadf"),
+    "spark.sql.session.timeZone": "America/Lima",
+    "fs.s3a.fast.upload.active.blocks": 8,
 }
 
 LIMA = pendulum.timezone("America/Lima")
@@ -39,8 +43,11 @@ with DAG(
         application="local:////opt/spark/app/users/ddl/brz_origendemo_users_ddl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "3g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
+            "spark.driver.cores": "1", 
+            "spark.driver.memory": "3g",
+            "spark.executor.instances": "1", 
+            "spark.executor.cores": "2", 
+            "spark.executor.memory": "3g",
             **BASE_SPARK_CONF
         },
         env_vars={
