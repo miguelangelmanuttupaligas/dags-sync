@@ -38,8 +38,8 @@ with DAG(
         application="local:////opt/spark/app/users/ddl/brz_origendemo_users_ddl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "2g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "2g",
+            "spark.driver.cores": "1", "spark.driver.memory": "3g",
+            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
             **BASE_SPARK_CONF,
         },
         env_vars={
@@ -52,8 +52,8 @@ with DAG(
         application="local:////opt/spark/app/users/etl/brz_origendemo_users_etl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "2g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "2g",
+            "spark.driver.cores": "1", "spark.driver.memory": "3g",
+            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
             **BASE_SPARK_CONF,
         },
         env_vars={
@@ -70,8 +70,8 @@ with DAG(
         application="local:////opt/spark/app/products/ddl/brz_origendemo_products_ddl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "2g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "2g",
+            "spark.driver.cores": "1", "spark.driver.memory": "3g",
+            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
             **BASE_SPARK_CONF,
         },
         env_vars={
@@ -84,8 +84,8 @@ with DAG(
         application="local:////opt/spark/app/products/etl/brz_origendemo_products_etl.py",
         conf={
             "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "2g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "2g",
+            "spark.driver.cores": "1", "spark.driver.memory": "3g",
+            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
             **BASE_SPARK_CONF,
         },
         env_vars={
