@@ -7,20 +7,20 @@ from datetime import datetime
 # -------- Configuración base común --------
 BASE_SPARK_CONF = {
     "spark.kubernetes.container.image.pullPolicy": "IfNotPresent",
-    "spark.kubernetes.authenticate.driver.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME"),
+    "spark.kubernetes.authenticate.driver.serviceAccountName": os.getenv("SERVICE_ACCOUNT_NAME",default="spark-sa-airflow"),
     "spark.kubernetes.namespace": os.getenv("POD_NAMESPACE",default="airflow"),
     "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
     "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
     "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
     "spark.sql.catalogImplementation": "hive",
-    "spark.sql.warehouse.dir": os.getenv("WAREHOUSE_DIR"),
-    "hive.metastore.uris": os.getenv("METASTORE_URI"),
-    "spark.databricks.delta.commitInfo.userMetadata": os.getenv("NB_USER"),
+    "spark.sql.warehouse.dir": os.getenv("WAREHOUSE_DIR",default="s3a://warehouse-prd/"),
+    "hive.metastore.uris": os.getenv("METASTORE_URI",default="thrift://hive-metastore-prd.metastore.svc.cluster.local:9083"),
+    "spark.databricks.delta.commitInfo.userMetadata": os.getenv("NB_USER",default="user_ch_prod"),
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
-    "spark.hadoop.fs.s3a.endpoint": os.getenv("S3_ENDPOINT_URL"),
+    "spark.hadoop.fs.s3a.endpoint": os.getenv("S3_ENDPOINT_URL",default="http://minio.data-services.svc.cluster.local:9000"),
     "spark.hadoop.fs.s3a.path.style.access": "true",
-    "spark.hadoop.fs.s3a.access.key": os.getenv("ACCESS_KEY"),
-    "spark.hadoop.fs.s3a.secret.key": os.getenv("SECRET_KEY"),
+    "spark.hadoop.fs.s3a.access.key": os.getenv("ACCESS_KEY",default="hive-key-prd-132fsad"),
+    "spark.hadoop.fs.s3a.secret.key": os.getenv("SECRET_KEY",default="hive-secret-prd-13rfsdfsadf"),
 }
 
 LIMA = pendulum.timezone("America/Lima")
