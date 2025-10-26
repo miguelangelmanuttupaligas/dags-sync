@@ -48,55 +48,5 @@ with DAG(
         }
     )
 
-    brz_origendemo_users_etl = SparkSubmitOperator(
-        task_id="brz_origendemo_users_etl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
-        application="local:////opt/spark/app/users/etl/brz_origendemo_users_etl.py",
-        conf={
-            "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "3g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
-            **BASE_SPARK_CONF
-        },
-        env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
-            "SERVER_DB": "mssql-service.data-services.svc.cluster.local:1433",
-            "FUENTE": "origendemo",
-            "USER": "SA",
-            "PASSWORD": "StrongPassword!23",
-        }
-    )
-
-    brz_origendemo_products_ddl = SparkSubmitOperator(
-        task_id="brz_origendemo_products_ddl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
-        application="local:////opt/spark/app/products/ddl/brz_origendemo_products_ddl.py",
-        conf={
-            "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "3g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
-            **BASE_SPARK_CONF
-        },
-        env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
-        }
-    )
-
-    brz_origendemo_products_etl = SparkSubmitOperator(
-        task_id="brz_origendemo_products_etl", conn_id=SPARK_CONN, verbose=True, java_class="org.apache.spark.examples.SparkPi",
-        application="local:////opt/spark/app/products/etl/brz_origendemo_products_etl.py",
-        conf={
-            "spark.kubernetes.container.image": IMAGEN_ORIGENDEMO,
-            "spark.driver.cores": "1", "spark.driver.memory": "3g",
-            "spark.executor.instances": "1", "spark.executor.cores": "2", "spark.executor.memory": "3g",
-            **BASE_SPARK_CONF
-        },
-        env_vars={
-            "POD_NAMESPACE": os.getenv("POD_NAMESPACE"), "BUCKET": "lhchprd", "NB_USER": os.getenv("NB_USER"),
-            "SERVER_DB": "mssql-service.data-services.svc.cluster.local:1433",
-            "FUENTE": "origendemo",
-            "USER": "SA",
-            "PASSWORD": "StrongPassword!23",
-        }
-    )
-
-brz_origendemo_users_ddl >> brz_origendemo_users_etl
-brz_origendemo_products_ddl >> brz_origendemo_products_etl
+brz_origendemo_users_ddl #>> brz_origendemo_users_etl
+#brz_origendemo_products_ddl >> brz_origendemo_products_etl
