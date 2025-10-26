@@ -26,6 +26,7 @@ BASE_SPARK_CONF = {
     "spark.sql.catalogImplementation": "hive",
     "spark.sql.warehouse.dir": os.getenv("WAREHOUSE_DIR",default="s3a://warehouse-prd/"),
     "hive.metastore.uris": os.getenv("METASTORE_URI",default="thrift://hive-metastore-prd.metastore.svc.cluster.local:9083"),
+    "spark.hadoop.hive.metastore.uris": os.getenv("METASTORE_URI",default="thrift://hive-metastore-prd.metastore.svc.cluster.local:9083"),
     "spark.databricks.delta.commitInfo.userMetadata": os.getenv("NB_USER",default="user_ch_prod"),
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
     "spark.hadoop.fs.s3a.endpoint": os.getenv("S3_ENDPOINT_URL",default="http://minio.data-services.svc.cluster.local:9000"),
