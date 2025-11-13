@@ -1,7 +1,7 @@
 import os
 import pendulum
 from airflow import DAG
-from airflow.operators.dummy import DummyOperator
+from airflow.providers.standard.operators.empty import EmptyOperator
 from datetime import datetime
 #Test
 # Definimos el DAG
@@ -10,28 +10,28 @@ with DAG(
     schedule="0 6 * * *", catchup=False,
     start_date=pendulum.datetime(2025, 1, 1, tz=LIMA),
 ) as dag:
-  # Tareas representadas como DummyOperator por ser solo ejemplos
-  dzonaterritorio = DummyOperator(task_id='DZONATERRITORIO', dag=dag)
-  dzona = DummyOperator(task_id='DZONA', dag=dag)
-  drecursos = DummyOperator(task_id='DRECURSO', dag=dag)
-  dsubrecurso = DummyOperator(task_id='DSUBRECURSO', dag=dag)
+  # Tareas representadas como EmptyOperator por ser solo ejemplos
+  dzonaterritorio = EmptyOperator(task_id='DZONATERRITORIO')
+  dzona = EmptyOperator(task_id='DZONA')
+  drecursos = EmptyOperator(task_id='DRECURSO')
+  dsubrecurso = EmptyOperator(task_id='DSUBRECURSO')
 
-  dclasepersona = DummyOperator(task_id='DCLASEPERSONA', dag=dag)
-  dubigeo = DummyOperator(task_id='DUBIGEO', dag=dag)
-  dpais = DummyOperator(task_id='DPAIS', dag=dag)
-  dtipovia = DummyOperator(task_id='DTIPOVIA', dag=dag)
-  dcliente = DummyOperator(task_id='DCLIENTE', dag=dag)
+  dclasepersona = EmptyOperator(task_id='DCLASEPERSONA')
+  dubigeo = EmptyOperator(task_id='DUBIGEO')
+  dpais = EmptyOperator(task_id='DPAIS')
+  dtipovia = EmptyOperator(task_id='DTIPOVIA')
+  dcliente = EmptyOperator(task_id='DCLIENTE')
 
-  dsector_economico = DummyOperator(task_id='DSECTORECONOMICO', dag=dag)
-  dactividadeconomica = DummyOperator(task_id='DACTIVIDADECONOMICA', dag=dag)
-  djeferegional = DummyOperator(task_id='djeferegional', dag=dag)
-  dcomite = DummyOperator(task_id='dcomite', dag=dag)
-  dsolicitudestado = DummyOperator(task_id='dsolicitudestado', dag=dag)
-  dadeudado = DummyOperator(task_id='dadeudado', dag=dag)
-  dadministrador = DummyOperator(task_id='dadministrador', dag=dag)
+  dsector_economico = EmptyOperator(task_id='DSECTORECONOMICO')
+  dactividadeconomica = EmptyOperator(task_id='DACTIVIDADECONOMICA')
+  djeferegional = EmptyOperator(task_id='djeferegional')
+  dcomite = EmptyOperator(task_id='dcomite')
+  dsolicitudestado = EmptyOperator(task_id='dsolicitudestado')
+  dadeudado = EmptyOperator(task_id='dadeudado')
+  dadministrador = EmptyOperator(task_id='dadministrador')
 
-  dsolicitud = DummyOperator(task_id='DSOLICITUD', dag=dag)
-  ddestinopivot = DummyOperator(task_id='DDESTINOPIVOT', dag=dag)
+  dsolicitud = EmptyOperator(task_id='DSOLICITUD')
+  ddestinopivot = EmptyOperator(task_id='DDESTINOPIVOT')
   # Definimos las dependencias basadas en el gráfico
   
 dzonaterritorio>> dzona
