@@ -5,6 +5,7 @@ from airflow.providers.standard.operators.empty import EmptyOperator
 from datetime import datetime
 #Test
 # Definimos el DAG
+LIMA = pendulum.timezone("America/Lima")
 with DAG(
     dag_id='mi_dag_ejemplo',
     schedule="0 6 * * *", catchup=False,
