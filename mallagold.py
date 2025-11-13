@@ -1,7 +1,7 @@
 import os
 import pendulum
 from airflow import DAG
-from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.dummy import DummyOperator
 from datetime import datetime
 #Test
 # Definimos el DAG
