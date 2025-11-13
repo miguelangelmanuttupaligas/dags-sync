@@ -8,7 +8,7 @@ from datetime import datetime
 with DAG(
     dag_id='mi_dag_ejemplo',
     schedule="0 6 * * *", catchup=False,
-    start_date=pendulum.datetime(2025, 1, 1, tz=LIMA),
+    start_date=pendulum.datetime(2025, 1, 1, tz=LIMA)
 ) as dag:
   # Tareas representadas como EmptyOperator por ser solo ejemplos
   dzonaterritorio = EmptyOperator(task_id='DZONATERRITORIO')
