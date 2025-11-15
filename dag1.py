@@ -1,6 +1,5 @@
 from airflow import DAG
-from airflow.operators.empty import EmptyOperator
-from airflow.operators.dummy_operator import DummyOperator
+from airflow.providers.standard.operators.empty import EmptyOperator
 from airflow.utils.dates import days_ago
 from airflow.providers.airflow.utils.task_group import TaskGroup
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
