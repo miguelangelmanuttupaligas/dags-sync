@@ -19,7 +19,7 @@ with DAG(
     task_2 = EmptyOperator(task_id="task_2")
     task_3 = EmptyOperator(task_id="task_3")
     task_4 = EmptyOperator(task_id="task_4")
-    task_5 = BashOperator(task_id="task_5",bash_commad='echo "Me encuentro en DAG 1"')
+    task_5 = BashOperator(task_id="task_5",bash_command='echo "Me encuentro en DAG 1"')
 
     task_1 >> [task_2,task_3]
     task_2 >> task_4
