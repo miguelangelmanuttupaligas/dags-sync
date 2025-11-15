@@ -14,6 +14,6 @@ with DAG(
 ) as dag:
   
   task_1 = EmptyOperator(task_id="task_1")
-  task_2 = BashOperator(task_id="task_2",bash_commad='echo "Me encuentro en DAG 3"')
+  task_2 = BashOperator(task_id="task_2",bash_command='echo "Me encuentro en DAG 3"')
 
   task_1
