@@ -17,7 +17,7 @@ with DAG(
 
   with TaskGroup("task_group_2") as tg2:
     task_1 = EmptyOperator(task_id="task_1")
-    task_2 = BashOperator(task_id="task_2",bash_commad='echo "Me encuentro en DAG 2"')
+    task_2 = BashOperator(task_id="task_2",bash_command='echo "Me encuentro en DAG 2"')
 
     task_1 >> task_2
 
