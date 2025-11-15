@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.empty import EmptyOperator
+from airflow.providers.standard.operators.empty import EmptyOperator
 from airflow.utils.dates import days_ago
 
 # Definimos el DAG 3
