@@ -2,7 +2,6 @@ import pendulum
 from datetime import datetime
 from airflow import DAG
 from airflow.providers.standard.operators.empty import EmptyOperator
-#from airflow.providers.airflow.utils.task_group import TaskGroup
 from airflow.sdk import TaskGroup
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 
@@ -23,8 +22,7 @@ with DAG(
 
   trigger_dag2 = TriggerDagRunOperator(
     task_id="trigger_dag2",
-    trigger_dag_id="dag_2",  # El DAG que se invoca
+    trigger_dag_id="dag_2"
   )
   
-  # Dependencias
   start_task >> tg1 >> trigger_dag2
