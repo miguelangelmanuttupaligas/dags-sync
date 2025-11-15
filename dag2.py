@@ -5,7 +5,7 @@ from airflow.operators.dagrun_operator import TriggerDagRunOperator
 from airflow.utils.dates import days_ago
 
 # Definimos el DAG 2
-with DAG(dag_id="dag_1",
+with DAG(dag_id="dag_2",
          schedule_interval=None,
          start_date=days_ago(1),
          catchup=False,
