@@ -2,6 +2,7 @@ import pendulum
 from datetime import datetime
 from airflow import DAG
 from airflow.providers.standard.operators.empty import EmptyOperator
+from airflow.providers.standard.operators.bash import BashOperator
 from airflow.sdk import TaskGroup
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 
@@ -16,7 +17,7 @@ with DAG(
 
   with TaskGroup("task_group_2") as tg2:
     task_1 = EmptyOperator(task_id="task_1")
-    task_2 = EmptyOperator(task_id="task_2")
+    task_2 = BashOperator(task_id="task_2",bash_commad='echo "Me encuentro en DAG 2"')
 
     task_1 >> task_2
 
