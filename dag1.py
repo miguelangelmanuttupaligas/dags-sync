@@ -4,7 +4,7 @@ from airflow import DAG
 from airflow.providers.standard.operators.empty import EmptyOperator
 #from airflow.providers.airflow.utils.task_group import TaskGroup
 from airflow.sdk import TaskGroup
-from airflow.operators.dagrun_operator import TriggerDagRunOperator
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 
 LIMA = pendulum.timezone("America/Lima")
 with DAG(
